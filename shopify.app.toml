@@ -1,0 +1,32 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "88b63ea8c997d8f5dc66719293985b12"
+name = "PayoutsAndCustomers"
+handle = "payoutsandcustomers"
+application_url = "https://infinite-chess-ll-twisted.trycloudflare.com"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-07"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products,read_orders,read_customers,read_shopify_payments_payouts"
+
+[auth]
+redirect_urls = ["https://infinite-chess-ll-twisted.trycloudflare.com/auth/callback", "https://infinite-chess-ll-twisted.trycloudflare.com/auth/shopify/callback", "https://infinite-chess-ll-twisted.trycloudflare.com/api/auth/callback"]
+
+[pos]
+embedded = false
